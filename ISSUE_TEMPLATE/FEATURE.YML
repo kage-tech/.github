@@ -1,0 +1,83 @@
+# .github/ISSUE_TEMPLATE/feature.yml
+name: ✨ Feature Request
+about: A new capability or enhancement
+title: "[Feature] "
+labels: feature
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected Component or Layer
+      options:
+        - Frontend
+        - Backend
+        - Agents
+        - API
+        - Data / DB
+        - Infrastructure
+        - CI/CD
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Environment or Version
+      placeholder: Future release, v2.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      placeholder: Add dark mode toggle to user settings.
+    validations:
+      required: true
+
+  - type: input
+    id: jira-ticket
+    attributes:
+      label: Jira Ticket (Optional)
+      placeholder: e.g., LEXI-190
+      description: Link to related Jira issue. Will auto-sync on creation.
+    validations:
+      required: false
+
+  - type: number
+    id: story-points
+    attributes:
+      label: Story Points (Optional)
+      placeholder: 3
+      description: Effort estimate (e.g., 1, 2, 3, 5, 8)
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Detailed Description
+      placeholder: Users want a dark mode option for reduced eye strain. Should persist across sessions.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Mockups, user feedback, or related roadmap items.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Urgency / Priority
+      options:
+        - Low - Can wait
+        - Medium - Should fix in next sprint
+        - High - Blocking progress
+        - Critical - Immediate attention needed
+    validations:
+      required: true

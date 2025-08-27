@@ -1,0 +1,86 @@
+# .github/labeler.yml
+# Auto-apply labels based on files changed or issue type
+
+# ——————————————————————
+# Area / Layer
+# ——————————————————————
+"area:frontend":
+  - "frontend/**"
+  - "web/**"
+  - "**/*.tsx"
+  - "**/*.css"
+  - "**/*.vue"
+  - "**/*.js"
+
+"area:backend":
+  - "backend/**"
+  - "api/**"
+  - "**/*.py"
+  - "**/*.go"
+  - "**/*.java"
+
+"area:agents":
+  - "agent/**"
+
+"area:infra":
+  - "infra/**"
+  - "**/*.tf"
+  - "**/*.yml"
+  - "**/docker-compose*.yml"
+  - "k8s/**"
+
+"area:docs":
+  - "docs/**"
+  - "**/*.md"
+  - ".github/**"
+
+"area:data":
+  - "data/**"
+  - "etl/**"
+  - "**/*.sql"
+  - "**/*.ipynb"
+
+# ——————————————————————
+# Type of Change
+# ——————————————————————
+"type:bug":
+  - "fix/**"
+  - "**/*bug*"
+  - "**/*.hotfix"
+
+"type:feature":
+  - "feature/**"
+  - "new/**"
+  - "**/*feature*"
+
+"type:refactor":
+  - "**/*refactor*"
+  - "**/*.restructure"
+
+"type:chore":
+  - "**/*chore*"
+  - "scripts/**"
+  - "**/*.sh"
+
+"type:docs":
+  - "**/*.md"
+  - "docs/**"
+
+"type:security":
+  - "**/*security*"
+  - "**/auth*"
+  - "**/encryption*"
+
+"type:performance":
+  - "**/*perf*"
+  - "**/optimize*"
+
+# ——————————————————————
+# Skip Changelog
+# ——————————————————————
+"skip-changelog":
+  - "docs/**"
+  - "**/*.md"
+  - ".github/**"
+  - "**/test/**"
+  - "**/*.spec.ts"

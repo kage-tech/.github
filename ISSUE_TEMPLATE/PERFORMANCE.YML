@@ -1,0 +1,83 @@
+# .github/ISSUE_TEMPLATE/performance.yml
+name: ⚡ Performance Issue
+about: Slowness or memory issues
+title: "[Performance] "
+labels: performance
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected Component or Layer
+      options:
+        - Frontend
+        - Backend
+        - Agents
+        - API
+        - Data / DB
+        - Infrastructure
+        - CI/CD
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Environment or Version
+      placeholder: v1.5.0, staging
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      placeholder: Dashboard loads in 8s on first render.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Detailed Description
+      placeholder: Query to fetch user metrics is unindexed, causing slow response.
+    validations:
+      required: true
+
+  - type: input
+    id: jira-ticket
+    attributes:
+      label: Jira Ticket (Optional)
+      placeholder: e.g., LEXI-190
+      description: Link to related Jira issue. Will auto-sync on creation.
+    validations:
+      required: false
+
+  - type: number
+    id: story-points
+    attributes:
+      label: Story Points (Optional)
+      placeholder: 3
+      description: Effort estimate (e.g., 1, 2, 3, 5, 8)
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Profiling data, Lighthouse score, or monitoring link.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Urgency / Priority
+      options:
+        - Low - Can wait
+        - Medium - Should fix in next sprint
+        - High - Blocking progress
+        - Critical - Immediate attention needed
+    validations:
+      required: true

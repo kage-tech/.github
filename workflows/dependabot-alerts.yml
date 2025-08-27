@@ -1,0 +1,50 @@
+# .github/workflows/dependabot-alerts.yml
+name: Check for Dependabot Alerts
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Every Monday at 9 AM
+  workflow_dispatch:     # Allow manual trigger
+
+jobs:
+  check-alerts:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: read
+    steps:
+      - name: Get Dependabot Alerts
+        id: alerts
+        run: |
+          # Fetch open alerts
+          ALERTS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/dependabot/alerts?state=open")
+
+          COUNT=$(echo "$ALERTS" | jq -r 'length')
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+
+          if [ "$COUNT" -gt 0 ]; then
+            echo "alerts=$ALERTS" >> $GITHUB_ENV
+          fi
+
+      - name: Send Slack Alert if Critical
+        if: ${{ steps.alerts.outputs.count > 0 }}
+        run: |
+          FIRST_ALERT=$(echo $ALERTS | jq -r '.[0]')
+          SEVERITY=$(echo $FIRST_ALERT | jq -r '.security_advisory.severity')
+          PACKAGE=$(echo $FIRST_ALERT | jq -r '.dependency.package.name')
+          MANAGER=$(echo $FIRST_ALERT | jq -r '.package_ecosystem')
+          ALERT_URL="https://github.com/${{ github.repository }}/security/dependabot"
+
+          curl -X POST -H 'Content-type: application/json' \
+          --data "{
+            \"text\": \"🚨 ${{ steps.alerts.outputs.count }} Dependabot Alert(s) in ${{ github.repository }}\",
+            \"blocks\": [
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"🚨 *Dependabot Alert*\\nRepository: ${{ github.repository }}\\nPackage: $PACKAGE\\nSeverity: $SEVERITY\\nEcosystem: $MANAGER\\n\\n<${ALERT_URL}|View Alerts>\"
+                }
+              }
+            ]
+          }" \
+          ${{ secrets.SLACK_WEBHOOK_URL }}

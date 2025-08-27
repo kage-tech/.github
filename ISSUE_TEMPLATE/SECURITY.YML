@@ -1,0 +1,83 @@
+# .github/ISSUE_TEMPLATE/security.yml
+name: 🔒 Security Issue
+about: Vulnerabilities or security improvements
+title: "[Security] "
+labels: security
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected Component or Layer
+      options:
+        - Frontend
+        - Backend
+        - Agents
+        - API
+        - Data / DB
+        - Infrastructure
+        - CI/CD
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Environment or Version
+      placeholder: v1.4.0, staging
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      placeholder: JWT token not properly validated in auth middleware.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Detailed Description
+      placeholder: Token signature is not verified, allowing forged tokens to grant access.
+    validations:
+      required: true
+
+  - type: input
+    id: jira-ticket
+    attributes:
+      label: Jira Ticket (Optional)
+      placeholder: e.g., LEXI-190
+      description: Link to related Jira issue. Will auto-sync on creation.
+    validations:
+      required: false
+
+  - type: number
+    id: story-points
+    attributes:
+      label: Story Points (Optional)
+      placeholder: 3
+      description: Effort estimate (e.g., 1, 2, 3, 5, 8)
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: CVE reference, scan result, or proof-of-concept.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Urgency / Priority
+      options:
+        - Low - Can wait
+        - Medium - Should fix in next sprint
+        - High - Blocking progress
+        - Critical - Immediate attention needed
+    validations:
+      required: true
