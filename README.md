@@ -1,6 +1,8 @@
-# 🛠️ `@kage-tech/.github` — Global Configuration
+# Welcome to Kage Technologies
 
-This repository defines **organization-wide defaults** for all repositories in [`@your-org`](https://github.com/your-org).
+`@kage-tech/.github` — Global Configuration. 
+
+This repository defines **organization-wide defaults** for all repositories in [`@kage-tech`](https://github.com/kage-tech).
 
 > 🔧 Changes here may affect **dozens of repositories** — please review carefully.
 
