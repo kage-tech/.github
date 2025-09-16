@@ -52,17 +52,17 @@ body:
       description: Link to related Jira issue. Will auto-sync on creation.
     validations:
       required: false
-      pattern: "^[0-9]+$"
 
 
   - type: input
     id: story-points
     attributes:
       label: Story Points (Optional)
-      placeholder: 3
+      placeholder: "3"
       description: Effort estimate (e.g., 1, 2, 3, 5, 8)
     validations:
       required: false
+      pattern: "^[0-9]+$"
 
   - type: textarea
     id: context
