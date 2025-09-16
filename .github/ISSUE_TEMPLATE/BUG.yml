@@ -1,6 +1,6 @@
 # .github/ISSUE_TEMPLATE/bug.yml
-name: 🐞 Bug Report
-about: A problem in the codebase causing incorrect behavior
+name: "🐞 Bug Report"
+description: A problem in the codebase causing incorrect behavior
 title: "[Bug] "
 labels: bug
 body:
@@ -53,7 +53,7 @@ body:
     validations:
       required: false
 
-  - type: number
+  - type: input
     id: story-points
     attributes:
       label: Story Points (Optional)
@@ -61,6 +61,7 @@ body:
       description: Effort estimate (e.g., 1, 2, 3, 5, 8)
     validations:
       required: false
+      pattern: "^[0-9]+$"
 
   - type: textarea
     id: context

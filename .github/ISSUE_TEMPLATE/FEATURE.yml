@@ -1,6 +1,6 @@
 # .github/ISSUE_TEMPLATE/feature.yml
-name: ✨ Feature Request
-about: A new capability or enhancement
+name: "✨ Feature Request"
+description: A new capability or enhancement
 title: "[Feature] "
 labels: feature
 body:
@@ -45,7 +45,7 @@ body:
     validations:
       required: false
 
-  - type: number
+  - type: input
     id: story-points
     attributes:
       label: Story Points (Optional)
@@ -53,6 +53,7 @@ body:
       description: Effort estimate (e.g., 1, 2, 3, 5, 8)
     validations:
       required: false
+      pattern: "^[0-9]+$"
 
   - type: textarea
     id: description

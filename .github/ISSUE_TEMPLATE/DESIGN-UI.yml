@@ -1,6 +1,6 @@
 # .github/ISSUE_TEMPLATE/design-ui.yml
 name: "🎨 Design / UI"
-about: Interface changes or issues
+description: Interface changes or issues
 title: "[Design] "
 labels: design
 body:
@@ -52,8 +52,10 @@ body:
       description: Link to related Jira issue. Will auto-sync on creation.
     validations:
       required: false
+      pattern: "^[0-9]+$"
 
-  - type: number
+
+  - type: input
     id: story-points
     attributes:
       label: Story Points (Optional)
